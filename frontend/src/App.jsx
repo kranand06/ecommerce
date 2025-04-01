@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./Components/Navbar"
 import './index.css'
-// import Footer from "./Components/Footer"
+import Footer from "./Components/Footer"
 import { createContext, useState } from 'react'
 
 
@@ -15,7 +15,7 @@ function App() {
     <UserContext.Provider value={{ open, setOpen }}>
       <Navbar />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
       </UserContext.Provider>
     </>
   )
