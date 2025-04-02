@@ -2,10 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import Component from './Components/Component.jsx'
+import Error404 from './Components/Error404.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Home from './Components/Home/home.jsx'
+import ProfilePage from './Components/ProfilePage.jsx'
+import CartPage from './Components/Cart/CartPage.jsx'
+import OrderPage from './Components/Order/OrderPage.jsx'
+
 
 
 
@@ -19,8 +23,20 @@ const route = createBrowserRouter([
         element:<Home />,
       },
       {
+        path: '/cart',
+        element:<CartPage />,
+      },
+      {
+        path: '/order',
+        element:<OrderPage />,
+      },
+      {
+        path: 'myprofile',
+        element: <ProfilePage />,
+      },
+      {
         path: '*',
-        element: <Component />,
+        element: <Error404 />,
       },
     ]
   }

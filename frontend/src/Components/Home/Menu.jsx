@@ -18,7 +18,7 @@ function Menu() {
                         onClick={() => {
                             setCategory(item.title)
                         }}
-                        className="w-48 p-3 cursor-pointer hover:scale-110 transition-all duration-200 flex-shrink-0"
+                        className={`w-48 p-3 cursor-pointer hover:shadow-xl rounded-xl transition-all duration-200 flex-shrink-0 ${category === item.title ? "border-4 border-orange-500  " : ""} `}
                     >
                         <img className="rounded-full aspect-square object-cover" src={item.image} alt="logo" />
                         <h2 className="text-lg mt-3 text-center">{item.title}</h2>

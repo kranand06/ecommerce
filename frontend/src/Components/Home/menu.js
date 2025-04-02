@@ -12,7 +12,7 @@ const Food = [
       id: 2,
       title: "Greek Salad",
       image: "salad1.png",
-      desc: "A refreshing mix of tomatoes, cucumbers, onions, olives, and feta cheese, dressed with olive oil and oregano.",
+      desc: "A refreshing mix of tomatoes, cucumbers, onions, olives, and dressed with olive oil and oregano.",
       price: "150",
       cat: "Salad",
     },
