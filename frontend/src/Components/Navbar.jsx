@@ -78,7 +78,10 @@ function Navbar() {
                     <Signin />
                     <div className='flex space-x-6 items-center mt-2 sm:hidden mx-3'>
                         <IoSearchSharp className=' w-8 h-8 hover:text-orange-400 hover:translate-x-1 duration-300  cursor-pointer'></IoSearchSharp>
+                    <NavLink to="/cart" className={({ isActive }) => ` ${(isActive == true) ? 'text-orange-400' : 'text-gray-700'} hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer`} >
                         <LuShoppingCart className='w-8 h-8 hover:text-orange-400 hover:translate-x-1 duration-300  cursor-pointer'></LuShoppingCart>
+                    </NavLink>
+
                     </div>
                     <div className='hidden sm:flex space-x-10 items-center'>
                         <IoSearchSharp className='w-8 h-8 hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300  cursor-pointer'></IoSearchSharp>

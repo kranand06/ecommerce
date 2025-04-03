@@ -20,19 +20,19 @@ const route = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '',
+        path: '/',
         element:<Home />,
       },
       {
-        path: '/menu',
+        path: 'menu',
         element:<MenuPage />,
       },
       {
-        path: '/cart',
+        path: 'cart',
         element:<CartPage />,
       },
       {
-        path: '/order',
+        path: 'order',
         element:<OrderPage />,
       },
       {
