@@ -9,6 +9,7 @@ import Home from './Components/Home/home.jsx'
 import ProfilePage from './Components/ProfilePage.jsx'
 import CartPage from './Components/Cart/CartPage.jsx'
 import OrderPage from './Components/Order/OrderPage.jsx'
+import MenuPage from './Components/Menu/MenuPage.jsx'
 
 
 
@@ -21,6 +22,10 @@ const route = createBrowserRouter([
       {
         path: '',
         element:<Home />,
+      },
+      {
+        path: '/menu',
+        element:<MenuPage />,
       },
       {
         path: '/cart',

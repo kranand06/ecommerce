@@ -1,10 +1,10 @@
-import React from 'react'
-import Food from "./menu.js"
+import React, { useState, useContext } from 'react';
+import { MenuContext } from '../../App.jsx';
 import ItemCount from './ItemCount.jsx'
 
 function FoodCard({ category }) {
 
-
+      const { Food } = useContext(MenuContext);
 
 
   return (

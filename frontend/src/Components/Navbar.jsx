@@ -20,6 +20,7 @@ function Navbar() {
 
 
     const navigation = useNavigate();
+
     const user = JSON.parse(localStorage.getItem("user"));
     const value = useContext(UserContext);
 
@@ -59,9 +60,9 @@ function Navbar() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/menu" className={({ isActive }) => ` ${(isActive == true) ? "text-orange-400" : "text-gray-700"} hover:text-orange-400 hover:scale-110 duration-300 `}>
-                                    Menu
-                                </NavLink>
+                            <NavLink to="/menu" className={({ isActive }) => ` ${(isActive == true) ? "text-orange-400" : "text-gray-700"} hover:text-orange-400 hover:scale-110 duration-300 `}>
+                            Menu
+                                    </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/mobileapp" className={({ isActive }) => ` ${(isActive == true) ? 'text-orange-400' : 'text-gray-700'} hover:text-orange-400 hover:scale-110  duration-300 `} >
@@ -80,16 +81,16 @@ function Navbar() {
                         <LuShoppingCart className='w-8 h-8 hover:text-orange-400 hover:translate-x-1 duration-300  cursor-pointer'></LuShoppingCart>
                     </div>
                     <div className='hidden sm:flex space-x-10 items-center'>
-                        <IoSearchSharp className='w-8 h-8 hover:text-orange-400 hover:translate-x-1 duration-300  cursor-pointer'></IoSearchSharp>
-                        <NavLink to="/cart" className={({ isActive }) => ` ${(isActive == true) ? 'text-orange-400' : 'text-gray-700'} hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer`} >
-                        <LuShoppingCart className='w-8 h-8'></LuShoppingCart>
+                        <IoSearchSharp className='w-8 h-8 hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300  cursor-pointer'></IoSearchSharp>
+                        <NavLink to="/cart" onclick={()=>navigate('/cart')} className={({ isActive }) => ` ${(isActive == true) ? 'text-orange-400' : 'text-gray-700'} hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer`} >
+                            <LuShoppingCart className='w-8 h-8 hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer'></LuShoppingCart>
                         </NavLink>
 
 
 
                         {user ? <div onClick={handleClick}>
-                            <img src={user.picture} alt="user" className="w-10 h-10 rounded-full" />
-                        </div> : <Button onClick={() => value.setOpen(true)} size='large' className='bg-black hover:text-[#BB86FC] hover:scale duration-300  cursor-pointer' variant="contained">Sign UP</Button>}
+                            <img src={user.picture} alt="user" className="w-10 h-10 rounded-full hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer" />
+                        </div> : <Button onClick={() => value.setOpen(true)} size='large' className='bg-black hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-600 cursor-pointer' variant="contained">Sign UP</Button>}
 
                         <Menu
                             id="basic-menu"

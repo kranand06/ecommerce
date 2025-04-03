@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { Category } from "./menu.js"
+import React, { useState, useContext } from 'react';
+import { MenuContext } from '../../App.jsx';
 import FoodCard from './FoodCard.jsx'
 
 
 function Menu() {
+
+      const { Category } = useContext(MenuContext);
 
     const [category, setCategory] = useState("View All")
 

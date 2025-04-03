@@ -4,8 +4,9 @@ import { CartContext } from '../../App.jsx';
 
 function ItemCount({title,price}) {
 
-    const [count, setCount] = useState(0);
     const value = useContext(CartContext);
+    const it= value.cart[title] || 0;
+    const [count, setCount] = useState(it);
 
 
   return (
