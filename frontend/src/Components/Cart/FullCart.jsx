@@ -1,17 +1,16 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { CartContext, AmountContext } from '../../App.jsx';
 import CartItem from './CartItem'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function FullCart() {
 
   const { total } = useContext(CartContext);
   const { amount, setAmount } = useContext(AmountContext);
-
   const [del, setDel] = useState(0);
   
-  const navigate = useNavigate();
+
 
 
   useEffect(() => {
@@ -45,10 +44,10 @@ function FullCart() {
         </div>
       </div>
       <div className='flex justify-center sm:justify-end items-center'>
-      <button onclick={()=>navigate('/order')} className="px-5 py-3 text-lg font-medium bg-orange-500 text-white rounded-md hover:bg-orange-600">
+      <Link to="/order" className='px-5 py-3 text-lg font-medium bg-orange-500 text-white rounded-md hover:bg-orange-600' >
+      {/* px-5 py-3 text-lg font-medium bg-orange-500 text-white rounded-md hover:bg-orange-600"> */} 
         Proceed to Checkout
-      </button>
-      
+      </Link>
       </div>
     </div>
   )
