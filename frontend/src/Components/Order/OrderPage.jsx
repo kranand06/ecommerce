@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import Signin from '../Signin';
 import OrderTotal from './OrderTotal';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../../App';
 
 
 
@@ -10,6 +11,9 @@ function OrderPage() {
 
   const navigate = useNavigate();
   const [Formdata, setFormdata] = useState([]);
+
+    const {setOpen} = useContext(UserContext);
+  
 
   const handleInput = (type, data) => {
     setFormdata({
@@ -22,7 +26,7 @@ function OrderPage() {
 
     const user = localStorage.getItem("user");
     if (!user) {
-      value.setOpen(true);
+      setOpen(true);
       return;
     }
 

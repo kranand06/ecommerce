@@ -28,7 +28,7 @@ function ProfilePage() {
             {/* Buttons Section */}
             <div className="flex justify-between">
               <button  className="bg-transparent border border-gray-300 text-gray-600 py-2 px-4 rounded hover:translate-x-1 cursor-pointer transition-all duration-300">
-                <Link to= "/mytrips">My Trips</Link>
+                <Link to= "/myorders">My Orders</Link>
               </button>
               <button onClick={handleLogout} className="bg-black text-white py-2 px-4 rounded  hover:bg-orange-600 cursor-pointer transition-all duration-300">
                 Logout

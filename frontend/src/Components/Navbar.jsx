@@ -101,7 +101,7 @@ function Navbar() {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem onClick={handleClose}><Link to="/mytrips" >My Trips</Link></MenuItem>
+                            <MenuItem onClick={handleClose}><Link to="/myorders" >My Orders</Link></MenuItem>
                             <MenuItem onClick={handleClose}><Link to="/myprofile" >Profile</Link></MenuItem>
                             <MenuItem onClick={handleLogout}>Logout</MenuItem>
                         </Menu>
