@@ -67,7 +67,7 @@ const AddItemForm = () => {
                     price: '',
                 });
                 setImage(null);
-                navigate("/list");
+                // navigate("/list");
             }
         } catch (error) {
             toast.error("Failed to add item! 🥲", { position: "bottom-right" });
@@ -182,51 +182,3 @@ const AddItemForm = () => {
 };
 
 export default AddItemForm;
-
-// import axios from "axios";
-// import { useState } from "react";
-
-// function AddItemForm() {
-//   const [title, setTitle] = useState("");
-//   const [desc, setDesc] = useState("");
-//   const [price, setPrice] = useState("");
-//   const [cat, setCat] = useState("");
-//   const [image, setImage] = useState(null);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append("title", title);
-//     formData.append("desc", desc);
-//     formData.append("price", price);
-//     formData.append("cat", cat);
-//     formData.append("image", image); // must match the name in multer: "image"
-
-//     try {
-//       const res = await axios.post("http://localhost:3000/api/food/add", formData, {
-//         headers: {
-//           "Content-Type": "multipart/form-data",
-//         },
-//       });
-
-//       console.log("Item added:", res.data);
-//     } catch (err) {
-//       console.error("Error adding item:", err);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       {/* input fields here */}
-//       <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" />
-//       <input type="text" value={desc} onChange={e => setDesc(e.target.value)} placeholder="Description" />
-//       <input type="number" value={price} onChange={e => setPrice(e.target.value)} placeholder="Price" />
-//       <input type="text" value={cat} onChange={e => setCat(e.target.value)} placeholder="Category" />
-//       <input type="file" onChange={e => setImage(e.target.files[0])} />
-//       <button type="submit">Add Item</button>
-//     </form>
-//   );
-// }
-
-// export default AddItemForm;
