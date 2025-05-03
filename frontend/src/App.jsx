@@ -3,7 +3,6 @@ import Navbar from "./Components/Navbar"
 import './index.css'
 import Footer from "./Components/Footer"
 import { createContext, useState } from 'react'
-import Food from "./menu"
 import { Category } from "./menu.js"
 
 
@@ -15,13 +14,16 @@ export const AmountContext = createContext();
 function App() {
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState({});
+  const [food, setFood] = useState({});
   const [total, setTotal] = useState(0);
   const [amount, setAmount] = useState(0);
+
+  
 
   return (
     <>
       <UserContext.Provider value={{ open, setOpen }}>
-        <MenuContext.Provider value={{ Food, Category }}>
+        <MenuContext.Provider value={{ food, setFood ,Category }}>
         <AmountContext.Provider value={{ amount, setAmount }}>
           <CartContext.Provider value={{  cart, setCart, total, setTotal }}>
             <Navbar />

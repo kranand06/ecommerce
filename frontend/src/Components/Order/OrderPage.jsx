@@ -31,7 +31,6 @@ function OrderPage() {
     }
 
     if (!Formdata.name1 || !Formdata.name2 || !Formdata.phone || !Formdata.mail || !Formdata.street || !Formdata.city || !Formdata.state || !Formdata.pincode) {
-      console.log(Formdata);
       toast.error("Please fill all the fields! 🥲", { position: "bottom-right" });
       return;
     }

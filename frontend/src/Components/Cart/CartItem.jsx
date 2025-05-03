@@ -2,19 +2,26 @@ import React, { useContext, useEffect } from "react";
 import { MenuContext, CartContext } from "../../App.jsx";
 
 function CartItem() {
-  const { Food } = useContext(MenuContext);
+  const { food } = useContext(MenuContext);
   const { cart, setCart, total, setTotal} = useContext(CartContext);
+
+    const url = "http://localhost:3000";
+
+    
+
 
 
   useEffect(() => {
-    const newTotal = Food.reduce((sum, item) => {
+    console.log("Cart updated:", cart);
+    console.log("Food updated:", food);
+    const newTotal = food.reduce((sum, item) => {
       if (cart[item.title]) {
         return sum + item.price * cart[item.title];
       }
       return sum;
     }, 0);
     setTotal(newTotal);
-  }, [cart, Food]);
+  }, [cart, food]);
 
   return (
     <div>
@@ -26,11 +33,12 @@ function CartItem() {
         <h1 className="text-md">Subtotal </h1>
       </div>
       <hr className="my-3" />
-      {Food.map((item) => {
+      {food.map((item) => {
+        const imageUrl = `${url}/images/${(item.image.startsWith("uploads"))?item.image.slice(8):item.image}`;
         if (cart[item.title]) {
           return (
             <div key={item.title} className="grid grid-cols-3 lg:grid-cols-5 items-center bg-white shadow-md rounded-lg p-4 w-full my-3">
-              <img src={item.image} alt={item.title} className="w-24 h-24 object-cover rounded-md" />
+              <img src={imageUrl} alt={item.image} className="w-24 h-24 object-cover rounded-md" />
 
               <h2 className="text-lg ">{item.title}</h2>
               <p className="text-gray-700 ">₹{item.price}</p>

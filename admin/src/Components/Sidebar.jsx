@@ -9,7 +9,7 @@ import { FaList } from "react-icons/fa6";
 
 function Sidebar() {
     return (
-        <div className='p-2 h-[100vh] sm:w-60 md:w-64 lg:w-72 xl:w-80 
+        <div className='p-2 h-[100vh] sm:w-60 md:w-64 lg:w-72 xl:w-80
         left-0 overflow-y-auto border-r-2 border-gray-200 bg-white shadow-lg flex flex-col gap-10'>
 
             <div className='flex flex-col gap-10 p-5 justify-center items-center sm:items-start'>

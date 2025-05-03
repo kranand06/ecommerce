@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -48,8 +48,8 @@ function ListItems() {
 
 
   return (
-    <div className='w-full p-4'>
-      <div className="grid grid-cols-4 lg:grid-cols-5 items-center justify-center p-4 w-full my-3 text-lg ">
+    <div className='w-full p-4 pt-0 h-[100vh] overflow-y-scroll'>
+      <div className="grid grid-cols-4 lg:grid-cols-5 items-center justify-center p-4  w-full mb-3 text-lg sticky top-0 bg-white z-10">
                 <h1 className="text-md">Image</h1>
                 <h1 className="text-md">Item Name</h1>
                 <h1 className="text-md">Item Price</h1>

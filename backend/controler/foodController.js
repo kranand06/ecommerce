@@ -18,11 +18,11 @@ const addFood = async (req, res) => {
         res.status(201).json({ message: "Food added successfully", food });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Failed to add food",error });
+        res.status(500).json({ message: "Failed to add food", error });
     }
 }
 
-//
+
 const listFood = async (req, res) => {
     try {
         const foods = await Food.find({});
