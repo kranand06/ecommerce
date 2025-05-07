@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const AddItemForm = () => {
 
-    const URL = "http://localhost:3000";
+    const URL = import.meta.env.VITE_API_URL;
 
     const navigate = useNavigate();
     const { setOpen } = useContext(UserContext);

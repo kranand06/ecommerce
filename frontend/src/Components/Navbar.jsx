@@ -44,10 +44,10 @@ function Navbar() {
 
     return (
         <>
-            <header className='shadow sticky mt-2 h-16'>
+            <header className='shadow sticky mt-2 h-20'>
                 <div className='flex justify-between items-center px-4 py-1 max-w-screen-xl mx-auto'>
                     <Link to="/">
-                        <img className='w-44' src="/Logo.png" alt="logo" />
+                        <img className='w-96' src="/Logo.svg" alt="logo" />
                     </Link>
 
 

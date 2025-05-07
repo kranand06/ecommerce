@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function ListCard({ item, fetchList }) {
 
-    const url = "http://localhost:3000";
+    const url = import.meta.env.VITE_API_URL;
 
     const imageUrl = `${url}/images/${(item.image.startsWith("uploads"))?item.image.slice(8):item.image}`;
 

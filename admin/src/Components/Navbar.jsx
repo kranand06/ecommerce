@@ -49,7 +49,7 @@ function Navbar() {
             <header className="fixed top-0 left-0 w-full shadow pt-2 h-20 bg-white">
                 <div className='flex justify-between items-center px-4 py-1 max-w-screen-xl mx-auto'>
                     <Link to="/">
-                        <img className='w-44' src="/Logo.png" alt="logo" />
+                        <img className='w-80' src="/Logo.svg" alt="logo" />
                     </Link>
 
                     <div className="hidden  w-full lg:flex lg:w-auto text-lg"
