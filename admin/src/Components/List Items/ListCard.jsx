@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function ListCard({ item, fetchList }) {
 
-    const url = import.meta.env.VITE_API_URL;
+  const url = import.meta.env.VITE_BACKEND_URL;
 
     const getImageurl = (image) => {
         // return `${url}/images/food_2.png`;

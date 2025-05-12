@@ -4,7 +4,7 @@ import { googleLogout } from '@react-oauth/google';
 
 function ProfilePage() {
 
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {name: 'Guest', email: 'example@tripper.com', picture: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fblank-profile-picture&psig=AOvVaw3laxN64YajMq0U1KVzKUWN&ust=1737053945715000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMiz16-0-IoDFQAAAAAdAAAAABAE'};
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {name: 'Guest', email: 'example@anandrestro.com', picture: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fblank-profile-picture&psig=AOvVaw3laxN64YajMq0U1KVzKUWN&ust=1737053945715000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMiz16-0-IoDFQAAAAAdAAAAABAE'};
     const navigation = useNavigate();
     const handleLogout = () => {
         googleLogout();

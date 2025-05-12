@@ -5,11 +5,7 @@ function CartItem() {
   const { food } = useContext(MenuContext);
   const { cart, setCart, total, setTotal} = useContext(CartContext);
 
-    const url = "http://localhost:3000";
-
-    
-
-
+  const url = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     console.log("Cart updated:", cart);

@@ -8,7 +8,7 @@ import { MenuContext } from "../../App.jsx";
 
 function FoodCard({ category }) {
 
-  const url = "http://localhost:3000";
+  const url = import.meta.env.VITE_BACKEND_URL;
 
     const { food, setFood } = useContext(MenuContext);
 
@@ -20,6 +20,7 @@ function FoodCard({ category }) {
   const fetchMenu = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
+      console.log(response);
       if (response.status === 200) {
         console.log(response.data);
         setFood(response.data);

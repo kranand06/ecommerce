@@ -7,7 +7,7 @@ import ListCard from './ListCard';
 function ListItems() {
 
 
-  const url = "http://localhost:3000";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
