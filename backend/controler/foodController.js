@@ -1,5 +1,11 @@
 import Food from "../Database/schema.js";
 import fs from "fs";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const addFood = async (req, res) => {
     const { title, desc, price, cat } = req.body;
@@ -40,7 +46,8 @@ const deleteFood = async (req, res) => {
         if (!food) {
             return res.status(404).json({ message: "Food not found" });
         }
-        fs.unlinkSync(food.image);
+        const imagePath = path.join(__dirname, '../uploads', food.image);
+        fs.unlinkSync(imagePath);
         await Food.findByIdAndDelete(id);
         res.status(200).json({ message: "Food deleted successfully" });
     } catch (error) {

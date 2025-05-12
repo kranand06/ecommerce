@@ -36,8 +36,8 @@ function Signin() {
 
         <Dialog open={value.open} onClose={() => value.setOpen(false)} >
             <div className='flex justify-between items-center'>
-            <img src="/Logo.png" alt="logo" className="w-48 m-5 mb-0" />
-            <div className=' p-5' onClick={() => value.setOpen(false)} ><RxCross2 className='w-6 h-6'></RxCross2></div>
+            <img src="/Logo.jpg" alt="logo" className="w-48 m-5 mb-0 left-[-8px]" />
+            <div className='pt-0 p-5' onClick={() => value.setOpen(false)} ><RxCross2 className='w-6 h-6'></RxCross2></div>
             </div>
             <DialogContent>
                 

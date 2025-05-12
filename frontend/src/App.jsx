@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar"
 import './index.css'
 import Footer from "./Components/Footer"
 import { createContext, useState } from 'react'
-import { Category } from "./menu.js"
+import Category from "./Category.js"
 
 
 export const UserContext = createContext();

@@ -8,13 +8,16 @@ function ListCard({ item, fetchList }) {
 
     const url = import.meta.env.VITE_API_URL;
 
-    const imageUrl = `${url}/images/${(item.image.startsWith("uploads"))?item.image.slice(8):item.image}`;
-
+    const getImageurl = (image) => {
+        // return `${url}/images/food_2.png`;
+        return `${url}/images/${(image.startsWith("uploads"))?image.slice(8):image}`;
+      }
     const handleDelete = async () => {
         try {
             const response = await axios.get(`${url}/api/food/delete/${item._id}`);
+            // console.log(response);
             if (response.status === 200) {
-                // toast.success("Item deleted successfully! 🚀", { position: "bottom-right" });
+                toast.success("Item deleted successfully! 🚀", { position: "bottom-right" });
                 fetchList();
             }
             
@@ -33,7 +36,7 @@ function ListCard({ item, fetchList }) {
             <hr className='' />
             <div key={item.title} className="grid grid-cols-4 lg:grid-cols-5 items-center justify-center bg-white p-4 w-full my-3">
 
-                <img src={imageUrl} alt={item.title} className="w-24 h-24 object-cover rounded-md" />
+                <img src={getImageurl(item.image)} alt={item.title} className="w-24 h-24 object-cover rounded-md" />
                 <h2 className="text-lg ">{item.title}</h2>
                 <p className="text-gray-700 ">₹{item.price}</p>
                 <p className="text-gray-700 hidden lg:flex ">{item.cat}</p>

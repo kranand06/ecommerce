@@ -1,7 +1,5 @@
-
 import Button from '@mui/material/Button';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-
 import Signin from "./Signin";
 import { UserContext } from '../App';
 import React, { useContext, useState } from 'react';
@@ -44,10 +42,10 @@ function Navbar() {
 
     return (
         <>
-            <header className='shadow sticky mt-2 h-20'>
+            <header className='shadow sticky mt-2 h-24'>
                 <div className='flex justify-between items-center px-4 py-1 max-w-screen-xl mx-auto'>
                     <Link to="/">
-                        <img className='w-96' src="/Logo.svg" alt="logo" />
+                        <img className='w-40 my-auto' src="/Logo.jpg" alt="logo" />
                     </Link>
 
 
