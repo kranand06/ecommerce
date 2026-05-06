@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import Signin from "./Signin";
 import { UserContext } from '../App';
 import React, { useContext, useState } from 'react';
 import Menu from '@mui/material/Menu';
@@ -8,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { googleLogout } from '@react-oauth/google';
 import { IoSearchSharp } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
+import Login from './Login/Login';
 
 
 
@@ -73,7 +73,7 @@ function Navbar() {
 
                         </ul>
                     </div>
-                    <Signin />
+                    <Login />
                     <div className='flex space-x-6 items-center mt-2 sm:hidden mx-3'>
                         <IoSearchSharp className=' w-8 h-8 hover:text-orange-400 hover:translate-x-1 duration-300  cursor-pointer'></IoSearchSharp>
                     <NavLink to="/cart" className={({ isActive }) => ` ${(isActive == true) ? 'text-orange-400' : 'text-gray-700'} hover:text-orange-400 hover:scale-110 hover:translate-x-1 duration-300 cursor-pointer`} >

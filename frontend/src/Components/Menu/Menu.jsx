@@ -5,13 +5,14 @@ import FoodCard from './FoodCard.jsx'
 
 function Menu() {
 
-      const { Category } = useContext(MenuContext);
+    const { Category } = useContext(MenuContext);
 
     const [category, setCategory] = useState("View All")
 
 
     return (
         <>
+             {/* Category Section */}
             <h1 id='menu' className='mt-5 text-2xl font-medium'>Choose from categories...</h1>
             <div className="flex  gap-8 mt-5 items-center pb-5 overflow-x-auto overflow-y-hidden whitespace-nowrap max-w-full">
                 {Category.map((item) => (
@@ -29,6 +30,7 @@ function Menu() {
             </div>
 
 
+            {/* FoodCard Section */}
             <hr className='my-5' />
             <h1 className='mt-10 text-3xl font-semibold'>Top Dishes near you.</h1>
             <FoodCard category={category} />

@@ -4,6 +4,7 @@ import './index.css'
 import Footer from "./Components/Footer"
 import { createContext, useState } from 'react'
 import Category from "./Category.js"
+import { ToastContainer } from "react-toastify"
 
 
 export const UserContext = createContext();
@@ -29,6 +30,7 @@ function App() {
             <Navbar />
             <Outlet />
             <Footer />
+            <ToastContainer/>
           </CartContext.Provider>
         </AmountContext.Provider>
         </MenuContext.Provider>
