@@ -4,6 +4,7 @@ import connectDB from './Database/db.js'
 import foodRouter from './routes/foodRoute.js'
 import cartRouter from './routes/cartRoutes.js'
 import userRouter from './routes/userRoutes.js'
+import cookieParser from 'cookie-parser'
 
 
 
@@ -15,6 +16,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser()) // To parse cookies
 
 //connect db
 connectDB();

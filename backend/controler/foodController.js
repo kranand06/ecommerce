@@ -1,4 +1,4 @@
-import Food from "../Database/schema.js";
+import Food from "../models/FoodModel.js";
 import fs from "fs";
 import path from 'path';
 import { fileURLToPath } from 'url';
