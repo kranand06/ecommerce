@@ -5,15 +5,14 @@ import Footer from "./Components/Footer"
 import { createContext, useState } from 'react'
 import Category from "./Category.js"
 import { ToastContainer } from "react-toastify"
+import UserProvider from "./Components/context/UserContext.jsx"
 
 
-export const UserContext = createContext();
 export const CartContext = createContext();
 export const MenuContext = createContext();
 export const AmountContext = createContext();
 
 function App() {
-  const [open, setOpen] = useState(false);
   const [cart, setCart] = useState({});
   const [food, setFood] = useState({});
   const [total, setTotal] = useState(0);
@@ -23,7 +22,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ open, setOpen }}>
+      <UserProvider>
         <MenuContext.Provider value={{ food, setFood ,Category }}>
         <AmountContext.Provider value={{ amount, setAmount }}>
           <CartContext.Provider value={{  cart, setCart, total, setTotal }}>
@@ -34,7 +33,7 @@ function App() {
           </CartContext.Provider>
         </AmountContext.Provider>
         </MenuContext.Provider>
-      </UserContext.Provider>
+      </UserProvider>
     </>
   )
 }

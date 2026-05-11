@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import OrderTotal from './OrderTotal';
 import { useNavigate } from "react-router-dom";
-import { UserContext } from '../../App';
+import { UserContext } from '../context/UserContext.jsx';
 import Login from '../Login/Login';
 
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../../App";
+import { UserContext } from "../context/UserContext.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 import { TextField, Button, Dialog, DialogContent } from "@mui/material";
 
 export default function AuthModal() {
-  const { open, setOpen } = useContext(UserContext);
+
+  const { open, setOpen, login, signup } = useContext(UserContext);
 
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -47,9 +48,44 @@ export default function AuthModal() {
     e.preventDefault();
 
     if (!validate()) return;
-    localStorage.setItem("user", JSON.stringify(formData));
-    toast.success(isLogin ? "Login successful" : "Signup successful");
-    setOpen(false);
+    
+    if (isLogin) {
+      const { email, password } = formData;
+      login(email, password)
+      .then((res) => {
+        if (res.success) {
+          toast.success("Login successful!");
+          setOpen(false);
+        } else {
+          toast.error(res.message);
+        }
+        
+      })
+      .catch((err) => {
+        console.error("Login error:", err);
+        toast.error("An error occurred. Please try again.");
+      });
+    setFormData({ name: "", email: "", password: "" });
+    }
+    else {
+      const { name, email, password } = formData;
+      signup(name, email, password)
+      .then((res) => {
+        if (res.success) {
+          toast.success("Signup successful!");
+          setOpen(false);
+        } else {
+          toast.error(res.message);
+        }
+        
+      })
+      .catch((err) => {
+        console.error("Signup error:", err);
+        toast.error("An error occurred. Please try again.");
+      });
+    setFormData({ name: "", email: "", password: "" });
+    }
+
   };
 
   return (

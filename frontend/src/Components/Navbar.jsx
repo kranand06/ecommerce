@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../App';
-import React, { useContext, useState } from 'react';
+import { UserContext } from './context/UserContext.jsx';
+import React, { useContext, useEffect, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { googleLogout } from '@react-oauth/google';
@@ -18,8 +18,8 @@ function Navbar() {
 
 
     const navigation = useNavigate();
+    const {logout, user} = useContext(UserContext);
 
-    const user = JSON.parse(localStorage.getItem("user"));
     const value = useContext(UserContext);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,8 +32,8 @@ function Navbar() {
     };
 
     const handleLogout = () => {
-        googleLogout();
-        localStorage.removeItem("user");
+        // googleLogout();
+        logout();
         setAnchorEl(null);
         navigation("/");
     };

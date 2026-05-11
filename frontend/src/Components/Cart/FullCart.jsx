@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import CartItem from './CartItem'
 import Total from './Total.jsx';
 import { useNavigate } from "react-router-dom";
-import { UserContext } from '../../App.jsx';
+import { UserContext } from '../context/UserContext.jsx';
 
 
 
@@ -10,10 +10,9 @@ function FullCart() {
 
 
   const navigate = useNavigate();
-  const {setOpen} = useContext(UserContext);
+  const {setOpen, user} = useContext(UserContext);
 
   const handleSubmit = async () => {
-    const user = localStorage.getItem("user");
     if (!user) {
         setOpen(true);
         return;
