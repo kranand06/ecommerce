@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Password must be at least 6 characters long'],
   },
   cartData:{
-    type: Array,
-    default: []
+    type: Object,
+    default: {}
   }
 },{minimize: false}); //here minimize false is used to prevent mongoose from removing empty objects from the cartData array
 
