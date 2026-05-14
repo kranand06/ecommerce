@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { CartContext, AmountContext } from '../../App.jsx';
+import { AmountContext } from '../../App.jsx';
+import { CartContext } from '../context/CartContext.jsx';
 
 function OrderTotal() {
 

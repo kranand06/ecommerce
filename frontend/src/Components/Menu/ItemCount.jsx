@@ -1,27 +1,24 @@
 import React, { useState,useContext} from 'react'
-import { CartContext } from '../../App.jsx';
+import { CartContext } from '../context/CartContext';
 
 
-function ItemCount({title,price}) {
 
-    const value = useContext(CartContext);
-    const it= value.cart[title] || 0;
-    const [count, setCount] = useState(it);
+function ItemCount({item}) {
+
+    const { cart, setCart, addToCart, removeFromCart } = useContext(CartContext);
+    const count = cart[item._id] || 0;
+    const [itemCount, setItemCount] = useState(count);
 
 
   return (
     <div className="flex items-center justify-between w-full mt-4 px-2">
-              <span className="text-xl  text-orange-600">₹{price}</span>
+              {/* <span className="text-xl  text-orange-600">₹{price}</span> */}
 
               {count === 0 ? (
                 <button
                   className="px-4 py-2 bg-orange-500 text-white rounded-md  hover:bg-orange-600 transition"
                   onClick={() => {
-                    setCount(count + 1);
-                    value.setCart((prevCart) => ({
-                        ...prevCart,
-                        [title]: 1,
-                    }));
+                    addToCart(item._id);
                   }}
                 >
                   Add to Cart
@@ -31,16 +28,7 @@ function ItemCount({title,price}) {
                   <button
                     className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
                     onClick={() => {
-                        setCount(count - 1);
-                        value.setCart((prevCart) => {
-                          const updatedCart = { ...prevCart };
-                          if (updatedCart[title] > 1) {
-                            updatedCart[title] -= 1;
-                          } else {
-                            delete updatedCart[title]; 
-                          }
-                          return updatedCart;
-                        });
+                        removeFromCart(item._id);
                       }}
                   >
                     −
@@ -49,12 +37,7 @@ function ItemCount({title,price}) {
                   <button
                     className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
                     onClick={() => {
-                        setCount(count + 1);
-                        value.setCart((prevCart) => ({
-                            ...prevCart,
-                            [title]: prevCart[title] + 1,
-                        
-                        }));
+                        addToCart(item._id);
                       }}
                   >
                     +
@@ -64,5 +47,4 @@ function ItemCount({title,price}) {
             </div>
   )
 }
-
 export default ItemCount

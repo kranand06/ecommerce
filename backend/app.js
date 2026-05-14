@@ -1,10 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import connectDB from './Database/db.js'
 import foodRouter from './routes/foodRoute.js'
 import cartRouter from './routes/cartRoutes.js'
 import userRouter from './routes/userRoutes.js'
-import cookieParser from 'cookie-parser'
 
 
 

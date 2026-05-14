@@ -20,14 +20,11 @@ function FoodCard({ category }) {
   const fetchMenu = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
-      console.log(response);
       if (response.status === 200) {
-        console.log(response.data);
         setFood(response.data);
         toast.success("Menu fetched successfully! 🚀", { position: "bottom-right" });
       }
     } catch (error) {
-      console.log(error);
       toast.error("Error fetching Menu! 🥲", { position: "bottom-right" });
     }
   }
@@ -42,14 +39,16 @@ function FoodCard({ category }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 pb-3 " >
       {food.length > 0 ? (
         food.map((item) => (
+          
           <div
-            key={item.id}
+            key={item._id}
             className={`p-3  rounded-lg cursor-pointer hover:shadow-lg transition-all duration-200 ${category === "View All" ? "" : (item.cat === category ? "" : "hidden")
-              }`}          >
+              }`}   
+              >
             <img className='w-full rounded-lg' src={getImageurl(item.image)} alt={item.title} />
             <h2 className="font-bold text-xl mt-3">{item.title}</h2>
             <h2 className="text-sm text-gray-500 mt-2">{item.desc}</h2>
-            <ItemCount title={item.title} price={item.price} />
+            <ItemCount item={item} />
           </div>
         ))
       ) : (

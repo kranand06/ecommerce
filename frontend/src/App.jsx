@@ -6,34 +6,34 @@ import { createContext, useState } from 'react'
 import Category from "./Category.js"
 import { ToastContainer } from "react-toastify"
 import UserProvider from "./Components/context/UserContext.jsx"
+import CartProvider from "./Components/context/CartContext.jsx"
 
 
-export const CartContext = createContext();
 export const MenuContext = createContext();
 export const AmountContext = createContext();
 
 function App() {
-  const [cart, setCart] = useState({});
   const [food, setFood] = useState({});
-  const [total, setTotal] = useState(0);
   const [amount, setAmount] = useState(0);
 
   
 
+
+
   return (
     <>
-      <UserProvider>
-        <MenuContext.Provider value={{ food, setFood ,Category }}>
-        <AmountContext.Provider value={{ amount, setAmount }}>
-          <CartContext.Provider value={{  cart, setCart, total, setTotal }}>
-            <Navbar />
-            <Outlet />
-            <Footer />
-            <ToastContainer/>
-          </CartContext.Provider>
-        </AmountContext.Provider>
-        </MenuContext.Provider>
-      </UserProvider>
+      <CartProvider>
+        <UserProvider>
+          <MenuContext.Provider value={{ food, setFood, Category }}>
+            <AmountContext.Provider value={{ amount, setAmount }}>
+              <Navbar />
+              <Outlet />
+              <Footer />
+              <ToastContainer />
+            </AmountContext.Provider>
+          </MenuContext.Provider>
+        </UserProvider>
+      </CartProvider>
     </>
   )
 }

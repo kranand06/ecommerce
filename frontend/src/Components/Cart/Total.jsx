@@ -1,18 +1,25 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { CartContext, AmountContext } from '../../App.jsx';
+import { CartContext } from '../context/CartContext.jsx';
+import { AmountContext } from '../../App.jsx';
 
 function Total() {
 
     const { total } = useContext(CartContext);
     const { amount, setAmount } = useContext(AmountContext);
     const [del, setDel] = useState(0);
-    
+
   
   
   
     useEffect(() => {
       if(total<500){
         setDel(50);
+      }
+      else if(total>=500){
+        setDel(0);
+      }
+      else if(total===0){
+        setDel(0);
       }
       else{
         setDel(0);

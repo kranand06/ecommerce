@@ -1,5 +1,5 @@
 import React, {  useContext, useEffect } from 'react';
-import { CartContext } from '../../App.jsx';
+import { CartContext } from '../context/CartContext.jsx';
 import FullCart from './FullCart.jsx';
 import EmptyCart from './EmptyCart.jsx';
 
@@ -12,7 +12,7 @@ function CartPage() {
 
   return (
     <div className='min-h-screen px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 gap-12 '>
-      {Object.keys(cart).length === 0 ? <EmptyCart /> : <FullCart />}
+      {(!cart || Object.keys(cart).length === 0) ? <EmptyCart /> : <FullCart />}
     </div>
   );
 }

@@ -1,11 +1,13 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { checkAuth, loginUser, logoutUser, signupUser } from "../utils/auth.js";
 import toast from "react-hot-toast";
+import { CartContext } from "./CartContext.jsx";
 
 export const UserContext = createContext({});
 
 export default function UserProvider({ children }) {
 
+  const {cart, setCart} = useContext(CartContext);
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -69,6 +71,7 @@ export default function UserProvider({ children }) {
     localStorage.removeItem("token");
     setUser(null);
     setToken(null);
+    setCart({});
     toast.success("Logged out successfully!");
     } else {
       toast.error("Logout failed. Try again.");

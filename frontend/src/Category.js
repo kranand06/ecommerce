@@ -9,6 +9,7 @@ const Category=[
         title : "Salad",
         image: "salad.png",
     },
+    
     {
         id:"2",
         title : "Rolls",
