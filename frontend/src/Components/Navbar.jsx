@@ -49,7 +49,7 @@ function Navbar() {
                     </Link>
 
 
-                    <div className="hidden  w-full lg:flex lg:w-auto text-lg"
+                    <div className="hidden w-full lg:flex lg:w-auto text-lg"
                     >
                         <ul className="flex space-x-10">
                             <li>

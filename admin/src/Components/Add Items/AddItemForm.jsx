@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const AddItemForm = () => {
 
-  const url = import.meta.env.VITE_BACKEND_URL;
+  const URL = import.meta.env.VITE_BACKEND_URL;
 
     const navigate = useNavigate();
     const { setOpen } = useContext(UserContext);
@@ -55,7 +55,6 @@ const AddItemForm = () => {
         newItem.append("price", formData.price);
         newItem.append("cat", formData.cat);
         newItem.append("image", image);
-        console.log(newItem);
 
         try {
             const response = await axios.post(`${URL}/api/food/add`, newItem);

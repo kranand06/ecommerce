@@ -1,5 +1,3 @@
-import e from "express";
-
 //updated
 const addToCart = async (req, res) => {
   try {

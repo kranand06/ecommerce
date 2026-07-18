@@ -5,6 +5,7 @@ import connectDB from './Database/db.js'
 import foodRouter from './routes/foodRoute.js'
 import cartRouter from './routes/cartRoutes.js'
 import userRouter from './routes/userRoutes.js'
+import paymentRouter from './routes/paymentRoutes.js'
 
 
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 app.use('/api/food', foodRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/user', userRouter);
+app.use("/api/payment", paymentRouter);
 app.use("/images", express.static('uploads'))
 
 export default app;
