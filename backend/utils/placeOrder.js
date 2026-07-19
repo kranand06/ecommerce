@@ -1,10 +1,29 @@
 import Food from "../models/FoodModel.js";
-import Order from "../models/orderModel.js";
+import Order from "../models/ordersModel.js";
+
+export const calculateAmount = async (cart) => {
+  let totalAmount = 0;
+
+  for (const foodId in cart) {
+    const quantity = cart[foodId];
+
+    if (quantity <= 0) continue;
+
+    const food = await Food.findById(foodId);
+
+    if (!food) continue;
+
+    totalAmount += food.price * quantity;
+  }
+
+  return totalAmount;
+};
 
 export const placeOrder = async (
   req,
   razorpay_order_id,
   razorpay_payment_id,
+  razorpay_signature,
   address,
 ) => {
   try {
@@ -43,6 +62,7 @@ export const placeOrder = async (
       payment: true,
       rzrOrderId: razorpay_order_id,
       rzrPaymentId: razorpay_payment_id,
+      rzrSignature: razorpay_signature,
     });
 
     await order.save();

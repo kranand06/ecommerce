@@ -1,9 +1,10 @@
 import crypto from "crypto";
 import razorpay from "../config/razorpay.js";
+import { calculateAmount, placeOrder } from "../utils/placeOrder.js";
 
 export const createOrder = async (req, res, next) => {
   try {
-    const { amount } = req.body;
+    const amount = await calculateAmount(req.user.cartData);
 
     const options = {
       amount: amount * 100,
@@ -24,7 +25,7 @@ export const createOrder = async (req, res, next) => {
 
 export const verifyPayment = async (req, res) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, address } =
       req.body;
 
     const body = razorpay_order_id + "|" + razorpay_payment_id;
@@ -41,6 +42,7 @@ export const verifyPayment = async (req, res) => {
         req,
         razorpay_order_id,
         razorpay_payment_id,
+        razorpay_signature,
         address,
       );
 
@@ -52,6 +54,7 @@ export const verifyPayment = async (req, res) => {
       message: "Invalid signature",
     });
   } catch (error) {
+    console.error("Error in verifyPayment:", error);
     res.status(500).json({
       success: false,
       message: error.message,

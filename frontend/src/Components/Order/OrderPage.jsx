@@ -4,6 +4,9 @@ import OrderTotal from './OrderTotal';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/UserContext.jsx';
 import Login from '../Login/Login';
+import { AmountContext } from '../../App.jsx';
+import { CartContext } from '../context/CartContext.jsx';
+import axios from 'axios';
 
 
 
@@ -13,6 +16,7 @@ function OrderPage() {
   const [Formdata, setFormdata] = useState([]);
 
     const {setOpen} = useContext(UserContext);
+    const { amount } = useContext(AmountContext);
   
 
   const handleInput = (type, data) => {
@@ -22,29 +26,100 @@ function OrderPage() {
     })
   }
 
+  const validateForm = () => {
+    if (!Formdata.name1 || !Formdata.name2 || !Formdata.phone || !Formdata.mail || !Formdata.street || !Formdata.city || !Formdata.state || !Formdata.pincode) {
+      toast.error("Please fill all the fields! 🥲", { position: "bottom-right" });
+      return false;
+    }
+    if (Formdata.phone.length != 10) {
+      toast.error("Please enter a valid Phone Number! 🥲", { position: "bottom-right" });
+      return false;
+    }
+    if (Formdata.pincode.length != 6) {
+      toast.error("Please enter a valid Pincode! 🥲", { position: "bottom-right" });
+      return false;
+    }
+    return true;
+  }
+
   const handleSubmit = async () => {
 
-    const user = localStorage.getItem("user");
-    if (!user) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       setOpen(true);
       return;
     }
 
-    if (!Formdata.name1 || !Formdata.name2 || !Formdata.phone || !Formdata.mail || !Formdata.street || !Formdata.city || !Formdata.state || !Formdata.pincode) {
-      toast.error("Please fill all the fields! 🥲", { position: "bottom-right" });
+    if (!validateForm()) {
       return;
     }
-    if (Formdata.phone.length != 10) {
-      toast.error("Please enter a valid Phone Number! 🥲", { position: "bottom-right" });
-      return;
-    }
-    if (Formdata.pincode.length != 6) {
-      toast.error("Please enter a valid Pincode! 🥲", { position: "bottom-right" });
-      return;
-    }
-    toast.success("Submitted Successfully! 🚀", { position: "bottom-right" });
-    console.log(Formdata);
-    navigate("/placed");
+
+    try {
+
+    // Step 1: Create Razorpay Order
+    const { data } = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/payment/create-order`,
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
+    console.log(data);
+
+    // Step 2: Configure Razorpay
+    const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Your Razorpay Key ID
+        amount: data.amount,
+        currency: data.currency,
+        name: "Anand Restro",
+        description: "Food Order",
+        order_id: data.id,
+
+        handler: async function (response) {
+            const verify = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/api/payment/verify`,
+                {
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_signature: response.razorpay_signature,
+                    address: Formdata,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (verify.data.success) {
+                toast.success("Payment Successful 🎉");
+                navigate("/placed");
+            } else {
+                toast.error("Payment Verification Failed");
+            }
+        },
+
+        prefill: {
+            name: `${Formdata.name1} ${Formdata.name2}`,
+            email: Formdata.mail,
+            contact: Formdata.phone,
+        },
+
+        theme: {
+            color: "#ff6b00",
+        },
+    };
+
+    // Step 3: Open Razorpay Checkout
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+} catch (error) {
+    console.log(error);
+    toast.error("Something went wrong");
+}
   }
 
 
