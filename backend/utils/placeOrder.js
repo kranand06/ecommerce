@@ -15,7 +15,15 @@ export const calculateAmount = async (cart) => {
 
     totalAmount += food.price * quantity;
   }
-
+  if (totalAmount <= 0) {
+    return res.status(400).json({
+      success: false,
+      message: "Cart is empty or invalid items",
+    });
+  }
+  if (totalAmount < 500) {
+    totalAmount += 50; // Add delivery charge if total is less than 500
+  }
   return totalAmount;
 };
 
@@ -52,6 +60,9 @@ export const placeOrder = async (
         image: food.image,
       });
     }
+    if (totalAmount < 500) {
+    totalAmount += 50; // Add delivery charge if total is less than 500
+  }
 
     // Create Order
     const order = new Order({

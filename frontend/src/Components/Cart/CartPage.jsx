@@ -6,9 +6,9 @@ import EmptyCart from './EmptyCart.jsx';
 function CartPage() {
   const {cart} = useContext(CartContext);
 
-  useEffect(() => {
-    console.log("Cart context updated:", cart);
-  }, [cart]);
+  // useEffect(() => {
+  //   console.log("Cart context updated:", cart);
+  // }, [cart]);
 
   return (
     <div className='min-h-screen px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 gap-12 '>

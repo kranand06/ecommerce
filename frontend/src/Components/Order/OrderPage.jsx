@@ -27,7 +27,7 @@ function OrderPage() {
   }
 
   const validateForm = () => {
-    if (!Formdata.name1 || !Formdata.name2 || !Formdata.phone || !Formdata.mail || !Formdata.street || !Formdata.city || !Formdata.state || !Formdata.pincode) {
+    if (!Formdata.name1 || !Formdata.name2 || !Formdata.phone  || !Formdata.street || !Formdata.city || !Formdata.state || !Formdata.pincode) {
       toast.error("Please fill all the fields! 🥲", { position: "bottom-right" });
       return false;
     }
@@ -50,9 +50,9 @@ function OrderPage() {
       return;
     }
 
-    if (!validateForm()) {
-      return;
-    }
+    // if (!validateForm()) {
+    //   // return;
+    // }
 
     try {
 
@@ -95,7 +95,7 @@ function OrderPage() {
 
             if (verify.data.success) {
                 toast.success("Payment Successful 🎉");
-                navigate("/placed");
+                navigate("/placed", { state: { order: verify.data.order } });
             } else {
                 toast.error("Payment Verification Failed");
             }
@@ -146,12 +146,12 @@ function OrderPage() {
               className="block w-full rounded-md bg-white px-4 py-2 text-base text-gray-900 outline outline-1 outline-gray-300 placeholder-gray-400 focus:outline-2 focus:outline-indigo-600 transition-all sm:text-lg"
             />
           </div>
-          <div>
+          {/* <div>
             <input required type="mail" name="mail" id="mail" placeholder="Email Id"
               onChange={(e) => { handleInput("mail", e.target.value) }}
               className="block w-full rounded-md bg-white px-4 py-2 text-base text-gray-900 outline outline-1 outline-gray-300 placeholder-gray-400 focus:outline-2 focus:outline-indigo-600 transition-all sm:text-lg"
             />
-          </div>
+          </div> */}
           <div>
             <input required type="text" name="street" id="street" placeholder="Street Address"
               onChange={(e) => { handleInput("street", e.target.value) }}

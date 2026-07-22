@@ -11,6 +11,7 @@ import CartPage from "./Components/Cart/CartPage.jsx";
 import OrderPage from "./Components/Order/OrderPage.jsx";
 import MenuPage from "./Components/Menu/MenuPage.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
+import OrderPlaced from "./Components/Order/OrderPlaced.jsx";
 
 const route = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const route = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <OrderPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "placed",
+        element: (
+          <ProtectedRoute>
+            <OrderPlaced />
           </ProtectedRoute>
         ),
       },
