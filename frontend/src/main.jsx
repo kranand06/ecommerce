@@ -12,6 +12,8 @@ import OrderPage from "./Components/Order/OrderPage.jsx";
 import MenuPage from "./Components/Menu/MenuPage.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 import OrderPlaced from "./Components/Order/OrderPlaced.jsx";
+import MyOrders from "./Components/MyOrder/MyOrders.jsx";
+import OrderDetails from "./Components/MyOrder/OrderDetails.jsx";
 
 const route = createBrowserRouter([
   {
@@ -47,6 +49,22 @@ const route = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <OrderPlaced />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "myorders",
+        element: (
+          <ProtectedRoute>
+            <MyOrders />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "myorders/:id",
+        element: (
+          <ProtectedRoute>
+            <OrderDetails />
           </ProtectedRoute>
         ),
       },
